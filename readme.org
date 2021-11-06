@@ -4,6 +4,9 @@
 - [[#project-ideas][Project Ideas]]
   - [[#big-data][Big Data]]
   - [[#education][Education]]
+- [[#spotify][Spotify]]
+  - [[#project-breakdown][Project Breakdown]]
+  - [[#resources][Resources]]
 
 * Project Ideas
 ** Big Data
@@ -11,6 +14,20 @@
 - Banana prices
   - Using banana prices to predict the supply chain
 - Look at supply chains
-- Check out [[data.gov]]
+- Check out [[https://data.gov]]
+-
 ** Education
 - Create some kind of tool to help students
+* Spotify
+- Create a website that acts an interface to grab data from spotify
+- Ask a user for an *artist* and then output data like:
+  - How has the artists average song length changed over time
+  - How has their BPM for songs changed over time
+** Project Breakdown
+- Create a web interface
+- Parse user data
+- Create graphs
+- Display data to the user
+- API access
+** Resources
+- [[https://spotipy.readthedocs.io/en/2.19.0/][Python Web API]]
