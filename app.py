@@ -9,23 +9,12 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
+import spotipy_test as sp
+
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
-
-# assume you have a "long-form" data frame
-# see https://plotly.com/python/px-arguments/ for more options
-df = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
-})
-fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
-types = ['number', 'text']
-
-types = ['Artist Name', "Year"]  # TODO add Year and what not later
-input_types = ['text', 'number']
 
 app.layout = html.Div(children = [
      html.H1(children='Spotify Data'),
@@ -48,23 +37,36 @@ app.layout = html.Div(children = [
              children='Enter a value and press submit'),
     html.Br(), #break (space between input and graph) 
     dcc.Graph(id = "graph", figure = {}),
-    dcc.Graph(id = "example-graph", figure = fig)
 ])
 
 @app.callback(
-    Output('button-check-output', 'children'),
+    Output('graph', 'figure'),
     Input('artist-name-submit-button', 'n_clicks'),
     State('artist-name-input', 'value')
 )
 def query_artist_name(n_clicks, artist_name):
-    fig.update_layout(title_text='NEW TITLE', title_x=0.5)
+    print("Getting Spotify Data...")
+    df = sp.look_up_artist(artist_name)
+    # fig = px.scatter(df, x p "date", y = "duration", text = "name")
+    print(df)
+    fig = px.scatter(df, x = "duration", y = "valence", text = "name", color = "album name")
+    return fig
+    return {data: [{'x': np.random.randint(0, 100, 1000), 'type': ''}]}
+    return return_random_histogram()
+    # return {}
+    #
+def return_random_histogram():
+    return {'data': [{'x': np.random.randint(0, 100, 1000), 'type': 'histogram'}]}
 
-    print(fig)
+# def query_artist_name(n_clicks, artist_name):
+#     fig.update_layout(title_text='NEW TITLE', title_x=0.5)
 
-    return 'The user inputted the artist: "{}" and the button has been clicked {} times'.format(
-        artist_name,
-        n_clicks
-    )
+#     print(fig)
+
+#     return 'The user inputted the artist: "{}" and the button has been clicked {} times'.format(
+#         artist_name,
+#         n_clicks
+#     )
 # dcc.Dropdown(id = "select_genre", 
 #     options = [
 #         {"label": "pop", "value": "Pop"},

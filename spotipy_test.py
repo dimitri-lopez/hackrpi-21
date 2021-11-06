@@ -2,7 +2,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import os
 from dotenv import load_dotenv
-import pandas
+import pandas as pd
 
 
 def album_to_panda(album):
@@ -35,7 +35,7 @@ def album_to_panda(album):
         panda_df['valence'].append(audio_feature_res[i]['valence'])
         panda_df['album name'].append(album['name'])
     # creating dataframe from song dict
-    df = pandas.DataFrame(data=panda_df)
+    df = pd.DataFrame(data=panda_df)
     return df
 
 
@@ -57,7 +57,8 @@ def look_up_artist(artist_name):
     albums = []
     for album in artist_all_album:
         albums.append(album_to_panda(album))
-    return albums
+    df = pd.concat(albums, ignore_index = True).drop_duplicates("name")
+    return df
 
 
 # import client ID and secret from .env
@@ -71,7 +72,5 @@ spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(
 
 if __name__ == '__main__':
     artist_name = "Dean Lewis"
-    albums = look_up_artist(artist_name)
-    for i in albums:
-        print("---------------")
-        print(i)
+    df = look_up_artist(artist_name)
+    print(df)
