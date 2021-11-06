@@ -1,1 +1,16 @@
 #+TITLE: HACK RPI
+
+* Table of Contents :toc:
+- [[#project-ideas][Project Ideas]]
+  - [[#big-data][Big Data]]
+  - [[#education][Education]]
+
+* Project Ideas
+** Big Data
+- analyze sports data
+- Banana prices
+  - Using banana prices to predict the supply chain
+- Look at supply chains
+- Check out [[data.gov]]
+** Education
+- Create some kind of tool to help students
