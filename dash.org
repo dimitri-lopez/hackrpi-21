@@ -9,8 +9,12 @@ code is being run.
 * Installation
 Following: https://dash.plotly.com/installation
 * Dash Deployment
-Following: https://dash.plotly.com/deployment
+- Following: https://dash.plotly.com/deployment
+- Heroku Deployment: https://devcenter.heroku.com/articles/procfile
 
+
+Setting up the virtual environment. Adds a list of dependencies and appends them
+to [[file:requirements.txt]].
 #+begin_src bash
 virtualenv venv # creates a virtualenv called "venv"
 source venv/bin/activate # uses the virtualenv
@@ -18,7 +22,21 @@ pip install dash
 pip install plotly
 pip install gunicorn
 pip install pandas
+pip freeze > requirements.txt
 #+end_src
+
+We next setup a Heroku app. This is what is going to host the dash code. Within
+our html we will provide a link to the Heroku app.
+
+#+begin_src bash
+sudo ln -s /var/lib/snapd/snap /snap # for setting up --classic for snap
+sudo snap install --classic heroku   # for installing heroku cli
+heroku create # create a heroku app
+heroku apps:rename hackrpi-spotify-query
+heroku git:remote -a hackrpi-spotify-query
+git push heroku main # push repo to heroku
+#+end_src
+
 * TODO List
 ** TODO Register a Domain Name
 We need to decide on a name first. I am going to use the porque website in the
