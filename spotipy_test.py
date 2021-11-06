@@ -23,6 +23,8 @@ def album_to_panda(album):
     panda_df['tempo'] = []
     panda_df['energy'] = []
     panda_df['valence'] = []
+    panda_df['album name'] = []
+
     # update song dictionary
     for i in range(len(album_songs)):
         panda_df['name'].append(album_songs[i]['name'])
@@ -31,6 +33,7 @@ def album_to_panda(album):
         panda_df['tempo'].append(audio_feature_res[i]['tempo'])
         panda_df['energy'].append(audio_feature_res[i]['energy'])
         panda_df['valence'].append(audio_feature_res[i]['valence'])
+        panda_df['album name'].append(album['name'])
     # creating dataframe from song dict
     df = pandas.DataFrame(data=panda_df)
     return df
