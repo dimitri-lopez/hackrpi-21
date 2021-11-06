@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/uguiw0obdr4e/public_html/porque.life
+    - /bin/cp -r * $DEPLOYPATH

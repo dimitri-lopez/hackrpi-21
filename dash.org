@@ -5,3 +5,9 @@ http://127.0.0.1:8050/
 
 * Installation
 Following: https://dash.plotly.com/installation
+* TODO List
+** TODO Register a Domain Name
+We need to decide on a name first. I am going to use the porque website in the
+mean time.
+
+https://www.tech.study/
