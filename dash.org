@@ -1,6 +1,12 @@
 #+TITLE: Dash
 
+https://porque.life
+
 http://127.0.0.1:8050/
+
+https://hackrpi-spotify-query.herokuapp.com/
+
+http://0.0.0.0:8000/
 
 We are going to have a central website that we can point people towards. Within
 the html for the website, there is an iframe link that calls to where the Dash
@@ -45,3 +51,5 @@ mean time.
 https://www.tech.study/
 ** TODO Change dash_example.py -> app.py
 ** TODO Figure out what [[./Procfile]] is
+* Interface
+- Textbox for searching the artist
