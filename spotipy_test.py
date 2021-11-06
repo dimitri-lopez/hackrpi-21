@@ -46,10 +46,17 @@ def look_up_artist(artist_name):
 
     # get said artist's uri
     if len(search_result['artists']['items']) > 0:
-        artist_uri = search_result['artists']['items'][0]['uri']
+        artist_obj = search_result['artists']['items'][0]
+        artist_uri = artist_obj['uri']
     else:
-        print('Artist not found!')
-        exit()
+        # print('Artist not found!')
+        return None
+
+    if len(artist_obj['images']) > 0:
+        artist_img_url = artist_obj['images'][0]['url']
+    else:
+        artist_img_url = ''
+    artist_info = [artist_obj['name'], ', '.join(artist_obj['genres']), artist_img_url, artist_obj['external_urls']['spotify']]
 
     album_result = spotify.artist_albums(artist_uri)
     artist_all_album = album_result['items']
@@ -58,7 +65,7 @@ def look_up_artist(artist_name):
     for album in artist_all_album:
         albums.append(album_to_panda(album))
     df = pd.concat(albums, ignore_index = True).drop_duplicates("name")
-    return df
+    return [df,artist_info]
 
 
 # import client ID and secret from .env
@@ -71,6 +78,7 @@ spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(
     SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET))
 
 if __name__ == '__main__':
-    artist_name = "Dean Lewis"
+    artist_name = "dodie"
     df = look_up_artist(artist_name)
-    print(df)
+    print(df[0])
+    print(df[1])
