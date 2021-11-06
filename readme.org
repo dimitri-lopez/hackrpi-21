@@ -1,23 +1,18 @@
 #+TITLE: HACK RPI
 
 * Table of Contents :toc:
+- [[#spotify][Spotify]]
+  - [[#project-breakdown][Project Breakdown]]
+  - [[#tasks][Tasks]]
+  - [[#resources][Resources]]
+  - [[#notes][Notes]]
+- [[#website][Website]]
+  - [[#plan][Plan]]
+  - [[#resources-1][Resources]]
 - [[#project-ideas][Project Ideas]]
   - [[#big-data][Big Data]]
   - [[#education][Education]]
-- [[#spotify][Spotify]]
-  - [[#project-breakdown][Project Breakdown]]
-  - [[#resources][Resources]]
 
-* Project Ideas
-** Big Data
-- analyze sports data
-- Banana prices
-  - Using banana prices to predict the supply chain
-- Look at supply chains
-- Check out [[https://data.gov]]
--
-** Education
-- Create some kind of tool to help students
 * Spotify
 - Create a website that acts an interface to grab data from spotify
 - Ask a user for an *artist* and then output data like:
@@ -29,5 +24,35 @@
 - Create graphs
 - Display data to the user
 - API access
+** Tasks
+- Setting up a website - Dimitri and Devanshu
+- Interfacing with the API -
+- Graphing Data
 ** Resources
 - [[https://spotipy.readthedocs.io/en/2.19.0/][Python Web API]]
+** Notes
+- Watch out for rate limit when using spotify api
+* Website
+** Plan
+We want to make something that looks something like the following. A dashboard
+where the user enters some information, we fetech the data, and then return some
+graphs and results. Something like the following:
+
+[[./.org_imgs/readme.org_20211106_115639_fXiemE.png]]
+
+We are going to be using Python Dash in order to do this.
+** Resources
+- https://dash.plotly.com/
+- https://appsilon.com/dash-vs-shiny/
+- https://dash.plotly.com/installation
+
+
+* Project Ideas
+** Big Data
+- analyze sports data
+- Banana prices
+  - Using banana prices to predict the supply chain
+- Look at supply chains
+- Check out [[https://data.gov]]
+** Education
+- Create some kind of tool to help students
