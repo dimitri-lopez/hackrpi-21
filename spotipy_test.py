@@ -51,8 +51,10 @@ def look_up_artist(artist_name):
     album_result = spotify.artist_albums(artist_uri)
     artist_all_album = album_result['items']
 
+    albums = []
     for album in artist_all_album:
-        print(album_to_panda(album))
+        albums.append(album_to_panda(album))
+    return albums
 
 
 # import client ID and secret from .env
@@ -66,4 +68,7 @@ spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(
 
 if __name__ == '__main__':
     artist_name = "Dean Lewis"
-    look_up_artist(artist_name)
+    albums = look_up_artist(artist_name)
+    for i in albums:
+        print("---------------")
+        print(i)
