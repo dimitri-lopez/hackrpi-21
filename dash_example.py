@@ -3,19 +3,15 @@
 # visit http://127.0.0.1:8050/ in your web browser.
 
 import dash
-from dash import html
-from dash import dcc
+from dash import Dash, html, dcc, Input, Output, State
 
 import plotly.express as px
 import pandas as pd
 import numpy as np
 
-
-
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
-
 
 
 # assume you have a "long-form" data frame
@@ -28,44 +24,47 @@ df = pd.DataFrame({
 fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
 types = ['number', 'text']
 
-types = ['Artist Name', 'Year']
+types = ['Artist Name', "Year"]  # TODO add Year and what not later
 input_types = ['text', 'number']
 
 app.layout = html.Div(children = [
      html.H1(children='Spotify Data'),
-     html.Div(children='''Dash: A web application framework for your data'''),
+     # html.Div(children='''Enter an Artist Name:'''),
     html.Div([
         dcc.Input(
-            id = "my_{}".format([types[x]]),
-            placeholder = "{}".format(types[x]),
-            type = input_types[x],
-            min = 2000, max= 2020, step = 1, 
-            minLength = 0, maxLength = 20, #num of characters inside input box
+            id = "artist-name-input",
+            placeholder = "Artist...",
+            type = "text",
+            # min = 2000, max= 2020, step = 1,
+            minLength = 0, maxLength = 100, #num of characters inside input box
             autoComplete = 'on',  
-            disabled = False,  #disable input
-            readOnly = False,  #make input box read only
-            required = False,  #requires user to put something into input box  SET TRUE LATER
+            required = False,  # requires user to put something into input box  SET TRUE LATER
+            autoFocus = True,  # highlight the box on reload
             size = "20"
-            #style = {'',''}
-            #className = ''
-            #persistence = ''
-            #persistence_type = ''
-        ) for x in range(len(input_types))
-    ]),
+        )]),
+    html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
+
+    html.Div(id='button-check-output',
+             children='Enter a value and press submit'),
     html.Br(), #break (space between input and graph) 
+    dcc.Graph(id = "graph", figure = {}),
     dcc.Graph(id = "example-graph", figure = fig)
 ])
 
-@app.callback( #call back links the data inputted with the graph  (Still working on this stuff below)
-    [Output(component_id = "example-graph", component_property = 'figure')],
-    [Input(component_id= "Year", component_property = "value")]
+@app.callback(
+    Output('button-check-output', 'children'),
+    Input('artist-name-submit-button', 'n_clicks'),
+    State('artist-name-input', 'value')
 )
+def query_artist_name(n_clicks, artist_name):
+    fig.update_layout(title_text='NEW TITLE', title_x=0.5)
 
-#function for the call back
-def update_graph(compprop):
-    print(compprop)
-    print(type(compprop))
+    print(fig)
 
+    return 'The user inputted the artist: "{}" and the button has been clicked {} times'.format(
+        artist_name,
+        n_clicks
+    )
 # dcc.Dropdown(id = "select_genre", 
 #     options = [
 #         {"label": "pop", "value": "Pop"},
