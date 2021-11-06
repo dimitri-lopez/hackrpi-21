@@ -44,49 +44,16 @@ app.layout = html.Div(children = [
     State('artist-name-input', 'value')
 )
 def query_artist_name(n_clicks, artist_name):
+    if n_clicks == 0:
+        return {}
+
     print("Getting Spotify Data...")
     df = sp.look_up_artist(artist_name)
     # fig = px.scatter(df, x p "date", y = "duration", text = "name")
     print(df)
     fig = px.scatter(df, x = "duration", y = "valence", text = "name", color = "album name")
     return fig
-    return {data: [{'x': np.random.randint(0, 100, 1000), 'type': ''}]}
-    return return_random_histogram()
-    # return {}
-    #
-def return_random_histogram():
-    return {'data': [{'x': np.random.randint(0, 100, 1000), 'type': 'histogram'}]}
-
-# def query_artist_name(n_clicks, artist_name):
-#     fig.update_layout(title_text='NEW TITLE', title_x=0.5)
-
-#     print(fig)
-
-#     return 'The user inputted the artist: "{}" and the button has been clicked {} times'.format(
-#         artist_name,
-#         n_clicks
-#     )
-# dcc.Dropdown(id = "select_genre", 
-#     options = [
-#         {"label": "pop", "value": "Pop"},
-#         multi = False,
-#         value = 'Pop',
-#         style = {'width' : '40%'}
-#     ]
-# )
-
-# app.layout = html.Div(children=[
-#     html.H1(children='Spotify Data'),
-#     html.Div(children='''
-#         Dash: A web application framework for your data.
-#     '''),
-
-#     dcc.Graph(
-#         id='example-graph',
-#         figure=fig
-#     )
-# ]) 
-
+    # return {data: [{'x': np.random.randint(0, 100, 1000), 'type': ''}]}
 
 if __name__ == '__main__':
     app.run_server(debug=True)
