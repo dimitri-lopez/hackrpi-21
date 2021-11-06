@@ -28,6 +28,7 @@ pip install dash
 pip install plotly
 pip install gunicorn
 pip install pandas
+pip install python-dotenv
 pip freeze > requirements.txt
 #+end_src
 
@@ -43,14 +44,18 @@ heroku git:remote -a hackrpi-spotify-query
 git push heroku main # push repo to heroku
 #+end_src
 
+We also need to add the right keys and tokens so that the Spotify API works proprely.
+
+#+begin_src bash
+heroku addons:create securekey --app hackrpi-spotify-query
+#+end_src
+
 * TODO List
 ** TODO Register a Domain Name
 We need to decide on a name first. I am going to use the porque website in the
 mean time.
 
 https://www.tech.study/
-** TODO Change dash_example.py -> app.py
-** TODO Figure out what [[./Procfile]] is
 * Interface
 - Textbox for searching the artist
 * List Comprehension for Multiple Input Boxes
@@ -93,3 +98,5 @@ def update_graph(compprop):
     print(compprop)
     print(type(compprop))
 #+end_src
+* Secret Keys
+https://devcenter.heroku.com/articles/securekey#:~:text=Secure%20Key%20can%20be%20attached,%2Dclear%2D6489...&text=This%20can%20be%20confirmed%20using%20the%20heroku%20config%20command.
