@@ -1,0 +1,7 @@
+#+TITLE: Dash
+
+http://127.0.0.1:8050/
+
+
+* Installation
+Following: https://dash.plotly.com/installation
