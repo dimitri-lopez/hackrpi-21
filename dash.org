@@ -1,0 +1,8 @@
+#+TITLE: Dash
+
+* Installation
+Following: https://dash.plotly.com/installation
+
+#+begin_src bash
+pip install dash
+#+end_src
