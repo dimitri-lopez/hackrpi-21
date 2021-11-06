@@ -1,0 +1,76 @@
+h1 {
+  color: dimgrey;
+  text-align: center;
+  padding: 0;
+  font-family: 'blaze-itc-tt-regular', sans-serif;
+}
+
+/* .row{ */
+/*   margin-left: 20%; */
+/*   margin-right: 20%; */
+/*   margin-bottom: 2%; */
+/* } */
+/* .column2{ */
+/*   float: left; */
+/*   width: 50%; */
+/*   color: dimgray; */
+/* } */
+
+/* .column2 h1, .column3 h1{ */
+/*   text-align: center; */
+/*   font-size: 175%; */
+/*   padding: 0; */
+/* } */
+
+/* .column2 h2, .column3 h2{ */
+/*   text-align: center; */
+/*   font-size: 165%; */
+/*   letter-spacing: 1px; */
+/* } */
+
+/* .column3{ */
+/*   float: left; */
+/*   width: 50%; */
+/*   color: dimgray; */
+/*   font-size: 100%; */
+/* } */
+
+/* .row:after{ */
+/*   content: ""; */
+/*   display: table; */
+/*   clear: both; */
+/* } */
+
+/* #nmCases{ */
+/* } */
+
+/* #nmCases ul li{ */
+/*   text-align: center; */
+/*   color: dimgrey; */
+/*   list-style: none; */
+/*   font-size: 1.5rem; */
+/*   margin-bottom: 2%; */
+/* } */
+
+/* #nmHeader { */
+/*   text-align: center; */
+/* } */
+
+/* #nmCol1 { */
+/*   width: 50%; */
+/*   float: left; */
+/* } */
+
+
+/* #nmCol1 ul, #nmCol1 h1{ */
+/*   margin-left: 20%; */
+/* } */
+
+/* #nmCol2 ul, #nmCol2 h1{ */
+/*   margin-right: 20%; */
+/* } */
+
+/* #nmCol2 { */
+/*   width: 50%; */
+/*   float: right; */
+/* } */
