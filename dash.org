@@ -2,12 +2,28 @@
 
 http://127.0.0.1:8050/
 
+We are going to have a central website that we can point people towards. Within
+the html for the website, there is an iframe link that calls to where the Dash
+code is being run.
 
 * Installation
 Following: https://dash.plotly.com/installation
+* Dash Deployment
+Following: https://dash.plotly.com/deployment
+
+#+begin_src bash
+virtualenv venv # creates a virtualenv called "venv"
+source venv/bin/activate # uses the virtualenv
+pip install dash
+pip install plotly
+pip install gunicorn
+pip install pandas
+#+end_src
 * TODO List
 ** TODO Register a Domain Name
 We need to decide on a name first. I am going to use the porque website in the
 mean time.
 
 https://www.tech.study/
+** TODO Change dash_example.py -> app.py
+** TODO Figure out what [[./Procfile]] is
