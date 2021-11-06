@@ -6,6 +6,7 @@
   - [[#tasks][Tasks]]
   - [[#resources][Resources]]
   - [[#notes][Notes]]
+  - [[#a][a]]
 - [[#website][Website]]
   - [[#plan][Plan]]
   - [[#resources-1][Resources]]
@@ -30,8 +31,11 @@
 - Graphing Data
 ** Resources
 - [[https://spotipy.readthedocs.io/en/2.19.0/][Python Web API]]
+- https://www.kaggle.com/thespacefreak/taylor-swift-spotify-data
+  - Example of the types of data that the spotify api can get
 ** Notes
 - Watch out for rate limit when using spotify api
+** a
 * Website
 ** Plan
 We want to make something that looks something like the following. A dashboard
