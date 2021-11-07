@@ -32,6 +32,10 @@ def album_to_panda(album):
 
     # update song dictionary
     for i in range(len(album_songs)):
+
+        if audio_feature_res[i] == None:
+            continue
+        
         panda_df['name'].append(album_songs[i]['name'])
         panda_df['duration'].append(album_songs[i]['duration_ms']//1000)
         panda_df['date'].append(album['release_date'])
@@ -55,7 +59,6 @@ def artist_top_songs(artist):
 
     # request audio features from spotify
     audio_feature_res = spotify.audio_features(song_ids)
-
     # create a dictionary for dataframe
     panda_df = {}
 
@@ -69,6 +72,10 @@ def artist_top_songs(artist):
 
     # update song dictionary
     for i in range(len(artist_top_hits)):
+        
+        if audio_feature_res[i] == None:
+            continue
+
         album_id = artist_top_hits[i]['album']['id']
         album_of_song = spotify.album(album_id)
         panda_df['name'].append(artist_top_hits[i]['name'])
