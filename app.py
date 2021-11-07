@@ -34,8 +34,17 @@ app.layout = html.Div(children=[
             required=False,  # requires user to put something into input box  SET TRUE LATER
             autoFocus=True,  # highlight the box on reload
             size="20"
-        )]),
-    html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
+        ),
+        html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
+        dcc.Dropdown(id='demo-dropdown',
+                     options=[
+                         {'label': 'New York City', 'value': 'NYC'},
+                         {'label': 'Montreal', 'value': 'MTL'},
+                         {'label': 'San Francisco', 'value': 'SF'}
+                     ],
+                     value='NYC'
+    ),
+    ]),
 
     html.Div(id='button-check-output',
              children='Enter your favorite artist'),
@@ -64,7 +73,8 @@ def query_artist_name(n_clicks, artist_name):
     spotify_url = results[1][3]
     # fig = px.scatter(df, x p "date", y = "duration", text = "name")
     print(df)
-    fig = px.scatter(df, x = "duration", y = "valence", text = "name", color = "album name")
+    # fig = px.scatter(df, x = "duration", y = "valence", text = "name", color = "album name")
+    fig = px.scatter(df, x = "duration", y = "valence", color = "album name")
     fig.update_layout(
         title=name,
         xaxis_title="X Axis Title".upper(),
