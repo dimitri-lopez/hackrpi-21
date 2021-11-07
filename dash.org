@@ -45,7 +45,8 @@ heroku git:remote -a hackrpi-spotify-query
 git push heroku main # push repo to heroku
 #+end_src
 
-We also need to add the right keys and tokens so that the Spotify API works proprely.
+We also need to add the right keys and tokens so that the Spotify API works
+proprely. I followed [[https://devcenter.heroku.com/articles/securekey#:~:text=Secure%20Key%20can%20be%20attached,%2Dclear%2D6489...&text=This%20can%20be%20confirmed%20using%20the%20heroku%20config%20command][this]] tutorial.
 
 #+begin_src bash
 heroku addons:create securekey --app hackrpi-spotify-query
@@ -59,45 +60,4 @@ mean time.
 https://www.tech.study/
 * Interface
 - Textbox for searching the artist
-* List Comprehension for Multiple Input Boxes
-#+begin_src python
-types = ['Artist Name', "Year"]  # TODO add Year and what not later
-input_types = ['text', 'number']
-
-app.layout = html.Div(children = [
-     html.H1(children='Spotify Data'),
-     # html.Div(children='''Enter an Artist Name:'''),
-    html.Div([
-        dcc.Input(
-            id = "my_{}".format([types[x]]),
-            placeholder = "{}".format(types[x]),
-            type = input_types[x],
-            min = 2000, max= 2020, step = 1,
-            minLength = 0, maxLength = 20, #num of characters inside input box
-            autoComplete = 'on',
-            disabled = False,  #disable input
-            readOnly = False,  #make input box read only
-            required = False,  #requires user to put something into input box  SET TRUE LATER
-            size = "20"
-            #style = {'',''}
-            #className = ''
-            #persistence = ''
-            #persistence_type = ''
-        ) for x in range(len(input_types))
-    ]),
-    html.Br(), #break (space between input and graph)
-    dcc.Graph(id = "example-graph", figure = fig)
-])
-
-@app.callback( #call back links the data inputted with the graph  (Still working on this stuff below)
-    [Output(component_id = "example-graph", component_property = 'figure')],
-    [Input(component_id= "Year", component_property = "value")]
-)
-
-#function for the call back
-def update_graph(compprop):
-    print(compprop)
-    print(type(compprop))
-#+end_src
 * Secret Keys
-https://devcenter.heroku.com/articles/securekey#:~:text=Secure%20Key%20can%20be%20attached,%2Dclear%2D6489...&text=This%20can%20be%20confirmed%20using%20the%20heroku%20config%20command.

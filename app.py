@@ -45,7 +45,6 @@ app.layout = html.Div(children=[
                         {'label': 'Tempo', 'value': "tempo"},
                         {'label': 'Energy', 'value': "energy"},
                         {'label': 'Valence','value': "valence"},
-                        {'label': "Album Name", 'value': "album name"}
                     ],
                     value = 'tempo',
                     style={'display': "inline-block", "float" : "right", 'width': '33%'}
@@ -57,7 +56,6 @@ app.layout = html.Div(children=[
                          {'label': 'Tempo', 'value': "tempo"},
                          {'label': 'Energy', 'value': "energy"},
                          {'label':'Valence', 'value': "valence"},
-                         {'label':"Album Name", 'value': "album name"}
                     ],
                     value='duration',
                     # style = {'width': '50%'}
