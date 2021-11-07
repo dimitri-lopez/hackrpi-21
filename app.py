@@ -47,12 +47,12 @@ app.layout = html.Div(children=[
                         {'label': 'Date', 'value': "date"},
                         {'label': 'Tempo', 'value': "tempo"},
                         {'label': 'Energy', 'value': "energy"},
-                        {'label': 'Valence', 'value': "valence"},
-                     ],
-                     value='tempo',
-                     style={'display': "inline-block",
-                            "float": "right", 'width': '33%'}
-                     ),
+
+                        {'label': 'Valence','value': "valence"},
+                    ],
+                    value = 'tempo',
+                    style={'display': "inline-block", "float" : "right", 'width': '33%'}
+        ),
         dcc.Dropdown(id='x-dropdown',
                      placeholder='x-axis',
                      options=[
@@ -60,15 +60,13 @@ app.layout = html.Div(children=[
                          {'label': 'Date', 'value': "date"},
                          {'label': 'Tempo', 'value': "tempo"},
                          {'label': 'Energy', 'value': "energy"},
-                         {'label': 'Valence', 'value': "valence"},
-                     ],
-                     value='duration',
-                     # style = {'width': '50%'}
-                     style={'display': "inline-block", "float": "right", 'width': '33%',
-                            'padding-right': '30px'}),
 
-
-        html.H2(id="artist-name", children='', style={'text-align': 'center'}),
+                         {'label':'Valence', 'value': "valence"},
+                    ],
+                    value='duration',
+                    # style = {'width': '50%'}
+                    style={'display': "inline-block", "float" : "right", 'width': '33%' }),
+        html.H2(id="artist-name", children=''),
         html.Img(id="artist_img", src='', style={
                  'height': '15%', 'width': '15%', 'border-radius': '50%',
                  'display': 'block',

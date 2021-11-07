@@ -1,4 +1,83 @@
-#+TITLE: HACK RPI
+#+TITLE: Spotify Query
+
+* Table of Contents :toc:
+- [[#project-details][Project Details]]
+- [[#what-we-learned][What We Learned]]
+- [[#challenges-we-ran-into][Challenges We Ran Into]]
+- [[#accomplishments][Accomplishments]]
+- [[#built-with][Built With]]
+- [[#plans-for-the-future][Plans for the Future]]
+
+* Project Details
+
+We created a user interface to generate visualizations describing the music of
+Spotify artists. The user inputs an artist and is then able to easily plot
+parameters of the music. Some of the parameters include:
+- Song duration
+- Publication date
+- Tempo (beats per minute)
+- Energy (perceptual measure of intensity / activity)
+- Valence (how positive / negative a song is)
+
+-----
+Website:
+- https://hackrpi-spotify-query.herokuapp.com
+- https://porque.life
+
+[[./.org_imgs/readme.org_20211106_222609_PlFip7.png]]
+
+[[./.org_imgs/readme.org_20211106_222648_kzzRRm.png]]
+
+-----
+
+Created by:
+- Dimitri Lopez
+- Devanshu Haldar
+- Huy Chu
+- Ryon Chan
+
+* What We Learned
+After struggling to get things deployed, we spent a majority of our time trying
+to style things so that they looked half decent. There is still quite a bit of
+work to do in this area.
+
+- Working with API's
+- Working with keys and tokens
+- HTML, CSS, webdevelopment
+- Working with Git
+- Deploying products
+- Managing websites
+- Working with data frames
+- A little bit of music theory
+
+* Challenges We Ran Into
+The majority of the day went surprisingly smoothly until it came to styling the
+webpage. After much frustration we got something that looked half decent.
+
+- Styling the website
+- Figuring out what services are needed to deploy the web app and website
+- Our lack of understanding of Git came back to haunt us
+- Parsing messy data
+- Edge cases when using the API
+* Accomplishments
+We got a web app off of the ground in less than a day and got a pretty good
+application tacked onto. The tool used here is something that we can definitely
+see ourselves using in the future, not only to compare songs by an artists but
+also find similar songs by an artist.
+
+We also learned an absolute ton about web development as well as a bunch of
+other useful technologies. Interfacing with an API and being able to use the
+Dash framework will definitely come in useful in the future.
+
+* Built With
+We used the following frameworks / API's / services to get the project running.
+
+- Python
+- HTML, CSS
+- Spotify Python API
+- Heroku
+- CPanel
+- Dash - Python Framework
 
 * Plans for the Future
 We spent a good chunk of time trying to get the styling of the page to behave
@@ -11,37 +90,6 @@ product.
 
 In terms of function, adding an option to compare parameters of two different
 artists would be interesting. It would also be interesting to compare different
-genres.
+genres. The user would then be able to see things like how the tempo of music
+has changed over time for various genres.
 
-* Spotify Search Query
-- Create a website that acts an interface to grab data from spotify
-- Ask a user for an *artist* and then output data like:
-  - How has the artists average song length changed over time
-  - How has their BPM for songs changed over time
-** Project Breakdown
-- Create a web interface
-- Parse user data
-- Create graphs
-- Display data to the user
-- API access
-** Tasks
-- Setting up a website - Dimitri and Devanshu
-- Interfacing with the API -
-- Graphing Data
-** Resources
-- [[https://spotipy.readthedocs.io/en/2.19.0/][Python Web API]]
-- https://www.kaggle.com/thespacefreak/taylor-swift-spotify-data
-  - Example of the types of data that the spotify api can get
-** Notes
-- Watch out for rate limit when using spotify api
-** a
-
-* Project Ideas
-** Big Data
-- analyze sports data
-- Banana prices
-  - Using banana prices to predict the supply chain
-- Look at supply chains
-- Check out [[https://data.gov]]
-** Education
-- Create some kind of tool to help students
