@@ -12,9 +12,10 @@ import numpy as np
 import spotipy_test as sp
 
 loading_figure = {"layout": {"xaxis": {"visible": False}, "yaxis": {"visible":
-False}, "annotations": [{"text": "No matching data found", "xref": "paper",
-"yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
-parameters = ["name", "duration", "date", "tempo", "energy", "valence", "album name"]
+                                                                    False}, "annotations": [{"text": "No matching data found", "xref": "paper",
+                                                                                             "yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
+parameters = ["name", "duration", "date",
+              "tempo", "energy", "valence", "album name"]
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -43,29 +44,38 @@ app.layout = html.Div(children=[
                          {'label': 'San Francisco', 'value': 'SF'}
                      ],
                      value='NYC'
-    ),
+                     ),
     ]),
 
     html.Div(id='button-check-output',
              children='Enter your favorite artist'),
     html.Br(),  # break (space between input and graph)
     dcc.Graph(id="graph", figure={}),
+    html.H2(id="artist-name", children=''),
+    html.Img(id="artist_img", src='', style={'height': '20%', 'width': '20%'}),
 
 ])
 
+
 @app.callback(
-    Output('graph', 'figure'),
+    [
+        Output('graph', 'figure'),
+        Output('artist-name', 'children'),
+        Output('artist_img', 'src'),
+    ],
     Input('artist-name-submit-button', 'n_clicks'),
     State('artist-name-input', 'value')
 )
 def query_artist_name(n_clicks, artist_name):
+    default_value = (loading_figure, 'My Artist',
+                     'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg')
     if n_clicks == 0:
-        return loading_figure
+        return default_value
 
     print("Getting Spotify Data...")
     results = sp.look_up_artist(artist_name)
     if results is None:
-        return loading_figure # Return an empty graph
+        return default_value  # Return an empty graph
     df = results[0]
     name = results[1][0]
     genre = results[1][1]
@@ -74,7 +84,7 @@ def query_artist_name(n_clicks, artist_name):
     # fig = px.scatter(df, x p "date", y = "duration", text = "name")
     print(df)
     # fig = px.scatter(df, x = "duration", y = "valence", text = "name", color = "album name")
-    fig = px.scatter(df, x = "duration", y = "valence", color = "album name")
+    fig = px.scatter(df, x="duration", y="valence", color="album name")
     fig.update_layout(
         title=name,
         xaxis_title="X Axis Title".upper(),
@@ -86,7 +96,7 @@ def query_artist_name(n_clicks, artist_name):
             color="RebeccaPurple"
         )
     )
-    return fig
+    return fig, name, image_url
     # return {data: [{'x': np.random.randint(0, 100, 1000), 'type': ''}]}
 
 
