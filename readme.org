@@ -9,6 +9,8 @@
 - [[#plans-for-the-future][Plans for the Future]]
 
 * Project Details
+Website: https://hackrpi-spotify-query.herokuapp.com/
+
 We created a user interface to generate visualizations describing the music of
 Spotify artists. The user inputs an artist and is then able to easily plot
 parameters of the music. Some of the parameters include:
