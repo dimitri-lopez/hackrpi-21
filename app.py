@@ -24,7 +24,7 @@ server = app.server
 app.layout = html.Div(children=[
     html.H1(children='Spotify Data'),
     # html.Div(children='''Enter an Artist Name:'''),
-    html.Div([
+     html.Div([
         dcc.Input(
             id="artist-name-input",
             placeholder="Artist...",
@@ -38,20 +38,27 @@ app.layout = html.Div(children=[
         ),
 
         html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
-        html.Div(id='button-check-output',
-                    children='Enter your favorite artist'),
-        html.H2(id="artist-name", children=''),
-        html.Img(id="artist_img", src='', style={
-                 'height': '15%', 'width': '15%'}),
-        html.P(id="artist-genre", children=''),
-        dcc.Dropdown(id='demo-dropdown',
-                     options=[
-                         {'label': 'New York City', 'value': 'NYC'},
-                         {'label': 'Montreal', 'value': 'MTL'},
-                         {'label': 'San Francisco', 'value': 'SF'}
-                     ],
-                     value='NYC'
-                     ),
+        dcc.Dropdown(id='x_dropdown',
+                     options = [
+                        {'label' : "Name", 'value': "Name"} , {'label' : "Duration",'value' : "Duration"} , {'label' : 'Date' ,'value' : "Date"},
+                        {'label' : 'Tempo', 'value' : "Tempo"} , {'label': 'Energy', 'value' : "Energy"}, {'label':'Valence','value' : "Valence"} , {'label' :"Album Name", 'value' : "Album Name"}
+                    ], 
+                    value='Name',
+                    # style = {'width': '50%'}
+                    style={'display': "inline-block", "float" : "right", 'width': '33%' }
+
+
+        ),
+        dcc.Dropdown(id = 'y_dropdown', 
+                    options = [
+                        {'label' : "Name", 'value': "Name"} , {'label' : "Duration",'value' : "Duration"} , {'label' : 'Date' ,'value' : "Date"},
+                        {'label' : 'Tempo', 'value' : "Tempo"} , {'label': 'Energy', 'value' : "Energy"}, {'label':'Valence','value' : "Valence"} , {'label' :"Album Name", 'value' : "Album Name"}
+                    ], 
+                    value = 'Name',
+                    style={'display': "inline-block", "float" : "right", 'width': '33%'}
+
+        ),
+                     
     ]),
 
     html.Br(),  # break (space between input and graph)
