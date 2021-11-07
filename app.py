@@ -67,7 +67,7 @@ app.layout = html.Div(children=[
                      value='duration',
                      # style = {'width': '50%'}
                      style={'display': "inline-block", "float": "right", 'width': '33%'}),
-        html.H2(id="artist-name", children=''),
+        html.H2(id="artist-name", children='', style={'text-align': 'center'}),
         html.Img(id="artist_img", src='', style={
                  'height': '15%', 'width': '15%', 'border-radius': '50%',
                  'display': 'block',
