@@ -42,7 +42,7 @@ app.layout = html.Div(children=[
                     children='Enter your favorite artist'),
         html.H2(id="artist-name", children=''),
         html.Img(id="artist_img", src='', style={
-                 'height': '15%', 'width': '15%'}),
+                 'height': '15%', 'width': '15%', 'border-radius': '50%'}),
         html.P(id="artist-genre", children=''),
         dcc.Dropdown(id='demo-dropdown',
                      options=[
