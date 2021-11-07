@@ -12,8 +12,8 @@ import numpy as np
 import spotipy_test as sp
 
 loading_figure = {"layout": {"xaxis": {"visible": False}, "yaxis": {"visible":
-False}, "annotations": [{"text": "No matching data found", "xref": "paper",
-"yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
+                                                                    False}, "annotations": [{"text": "No matching data found", "xref": "paper",
+                                                                                             "yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
 parameters = ["name", "duration", "date",
               "tempo", "energy", "valence", "album name"]
 
@@ -38,30 +38,31 @@ app.layout = html.Div(children=[
              ),
 
         html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
-        dcc.Dropdown(id = 'y-dropdown',
-                    options = [
-                        {'label': "Duration", 'value': "duration"},
+        dcc.Dropdown(id='y-dropdown',
+                     options=[
+                         {'label': "Duration", 'value': "duration"},
                         {'label': 'Date', 'value': "date"},
                         {'label': 'Tempo', 'value': "tempo"},
                         {'label': 'Energy', 'value': "energy"},
-                        {'label': 'Valence','value': "valence"},
+                        {'label': 'Valence', 'value': "valence"},
                         {'label': "Album Name", 'value': "album name"}
-                    ],
-                    value = 'tempo',
-                    style={'display': "inline-block", "float" : "right", 'width': '33%'}
-        ),
+                     ],
+                     value='tempo',
+                     style={'display': "inline-block",
+                            "float": "right", 'width': '33%'}
+                     ),
         dcc.Dropdown(id='x-dropdown',
-                     options = [
+                     options=[
                          {'label': "Duration", 'value': "duration"},
                          {'label': 'Date', 'value': "date"},
                          {'label': 'Tempo', 'value': "tempo"},
                          {'label': 'Energy', 'value': "energy"},
-                         {'label':'Valence', 'value': "valence"},
-                         {'label':"Album Name", 'value': "album name"}
-                    ],
-                    value='duration',
-                    # style = {'width': '50%'}
-                    style={'display': "inline-block", "float" : "right", 'width': '33%' }),
+                         {'label': 'Valence', 'value': "valence"},
+                         {'label': "Album Name", 'value': "album name"}
+                     ],
+                     value='duration',
+                     # style = {'width': '50%'}
+                     style={'display': "inline-block", "float": "right", 'width': '33%'}),
         html.H2(id="artist-name", children=''),
         html.Img(id="artist_img", src='', style={
                  'height': '15%', 'width': '15%', 'border-radius': '50%'}),
@@ -70,7 +71,8 @@ app.layout = html.Div(children=[
 
     html.Br(),  # break (space between input and graph)
     html.Br(),  # break (space between input and graph)
-    dcc.Graph(id = "graph", figure = {}, style={'width': '100%', 'height': '90vh'}),
+    dcc.Graph(id="graph", figure={}, style={
+              'width': '100%', 'height': '90vh'}),
 
 ])
 
