@@ -9,7 +9,6 @@
 - [[#plans-for-the-future][Plans for the Future]]
 
 * Project Details
-Website: https://hackrpi-spotify-query.herokuapp.com/
 
 We created a user interface to generate visualizations describing the music of
 Spotify artists. The user inputs an artist and is then able to easily plot
@@ -19,6 +18,11 @@ parameters of the music. Some of the parameters include:
 - Tempo (beats per minute)
 - Energy (perceptual measure of intensity / activity)
 - Valence (how positive / negative a song is)
+
+-----
+Website:
+- https://hackrpi-spotify-query.herokuapp.com
+- https://porque.life
 
 [[./.org_imgs/readme.org_20211106_222609_PlFip7.png]]
 
