@@ -51,6 +51,12 @@ app.layout = html.Div(children=[
                      style={'display': "inline-block",
                             "float": "right", 'width': '33%'}
                      ),
+                        {'label': 'Valence', 'value': "valence"},
+                    ],
+                    value='tempo',
+                    style={'display': "inline-block",
+                        "float": "right", 'width': '33%'}
+        ),
         dcc.Dropdown(id='x-dropdown',
                      options=[
                          {'label': "Duration", 'value': "duration"},
@@ -63,6 +69,11 @@ app.layout = html.Div(children=[
                      value='duration',
                      # style = {'width': '50%'}
                      style={'display': "inline-block", "float": "right", 'width': '33%'}),
+                         {'label': 'Valence', 'value': "valence"},
+                    ],
+                    value='duration',
+                    # style = {'width': '50%'}
+                    style={'display': "inline-block", "float": "right", 'width': '33%'}),
         html.H2(id="artist-name", children=''),
         html.Img(id="artist_img", src='', style={
                  'height': '15%', 'width': '15%', 'border-radius': '50%'}),
