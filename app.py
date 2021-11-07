@@ -36,7 +36,13 @@ app.layout = html.Div(children=[
             autoFocus=True,  # highlight the box on reload
             size="20"
         ),
+
         html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
+        html.Div(id='button-check-output',
+                    children='Enter your favorite artist'),
+        html.H2(id="artist-name", children=''),
+        html.Img(id="artist_img", src='', style={
+                 'height': '20%', 'width': '20%'}),
         dcc.Dropdown(id='demo-dropdown',
                      options=[
                          {'label': 'New York City', 'value': 'NYC'},
@@ -47,12 +53,8 @@ app.layout = html.Div(children=[
                      ),
     ]),
 
-    html.Div(id='button-check-output',
-             children='Enter your favorite artist'),
     html.Br(),  # break (space between input and graph)
     dcc.Graph(id="graph", figure={}),
-    html.H2(id="artist-name", children=''),
-    html.Img(id="artist_img", src='', style={'height': '20%', 'width': '20%'}),
 
 ])
 
