@@ -42,7 +42,8 @@ app.layout = html.Div(children=[
                     children='Enter your favorite artist'),
         html.H2(id="artist-name", children=''),
         html.Img(id="artist_img", src='', style={
-                 'height': '20%', 'width': '20%'}),
+                 'height': '15%', 'width': '15%'}),
+        html.P(id="artist-genre", children=''),
         dcc.Dropdown(id='demo-dropdown',
                      options=[
                          {'label': 'New York City', 'value': 'NYC'},
@@ -64,13 +65,15 @@ app.layout = html.Div(children=[
         Output('graph', 'figure'),
         Output('artist-name', 'children'),
         Output('artist_img', 'src'),
+        Output('artist-genre', 'children'),
     ],
     Input('artist-name-submit-button', 'n_clicks'),
     State('artist-name-input', 'value')
 )
 def query_artist_name(n_clicks, artist_name):
     default_value = (loading_figure, 'My Artist',
-                     'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg')
+                     'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
+                     'Genre:')
     if n_clicks == 0:
         return default_value
 
@@ -80,7 +83,7 @@ def query_artist_name(n_clicks, artist_name):
         return default_value  # Return an empty graph
     df = results[0]
     name = results[1][0]
-    genre = results[1][1]
+    genre = 'Genre: '+results[1][1]
     image_url = results[1][2]
     spotify_url = results[1][3]
     # fig = px.scatter(df, x p "date", y = "duration", text = "name")
@@ -98,7 +101,7 @@ def query_artist_name(n_clicks, artist_name):
             color="RebeccaPurple"
         )
     )
-    return fig, name, image_url
+    return fig, name, image_url, genre
     # return {data: [{'x': np.random.randint(0, 100, 1000), 'type': ''}]}
 
 
