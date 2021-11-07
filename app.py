@@ -23,7 +23,7 @@ server = app.server
 
 app.layout = html.Div(children=[
     html.H1(children='Spotify Data', style={
-            'margin-top': '15px', 'margin-top': '10px'}),
+            'margin-left': '20px', 'text-align': 'center', 'margin-top': '20px'}),
     # html.Div(children='''Enter an Artist Name:'''),
     html.Div([
         dcc.Input(
@@ -41,34 +41,42 @@ app.layout = html.Div(children=[
 
         html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
         dcc.Dropdown(id='y-dropdown',
+                     placeholder='y-axis',
                      options=[
                          {'label': "Duration", 'value': "duration"},
                         {'label': 'Date', 'value': "date"},
                         {'label': 'Tempo', 'value': "tempo"},
                         {'label': 'Energy', 'value': "energy"},
                         {'label': 'Valence', 'value': "valence"},
-                        {'label': "Album Name", 'value': "album name"}
                      ],
                      value='tempo',
                      style={'display': "inline-block",
                             "float": "right", 'width': '33%'}
                      ),
         dcc.Dropdown(id='x-dropdown',
+                     placeholder='x-axis',
                      options=[
                          {'label': "Duration", 'value': "duration"},
                          {'label': 'Date', 'value': "date"},
                          {'label': 'Tempo', 'value': "tempo"},
                          {'label': 'Energy', 'value': "energy"},
                          {'label': 'Valence', 'value': "valence"},
-                         {'label': "Album Name", 'value': "album name"}
                      ],
                      value='duration',
                      # style = {'width': '50%'}
-                     style={'display': "inline-block", "float": "right", 'width': '33%'}),
-        html.H2(id="artist-name", children='', style={'margin-left': '50px'}),
+                     style={'display': "inline-block", "float": "right", 'width': '33%',
+                            'padding-right': '30px'}),
+
+
+        html.H2(id="artist-name", children='', style={'text-align': 'center'}),
         html.Img(id="artist_img", src='', style={
-                 'height': '15%', 'width': '15%', 'border-radius': '50%', 'margin-left': '50px'}),
-        html.P(id="artist-genre", children='', style={'margin-left': '50px'}),
+                 'height': '15%', 'width': '15%', 'border-radius': '50%',
+                 'display': 'block',
+                 'margin-left': 'auto',
+                 'margin-right': 'auto'
+                 }),
+        html.P(id="artist-genre", children='',
+               style={'text-align': 'center', 'margin-top': '10px'}),
     ]),
 
     html.Br(),  # break (space between input and graph)
@@ -96,7 +104,7 @@ app.layout = html.Div(children=[
 def query_artist_name(n_clicks, x_dropdown, y_dropdown, artist_name):
     default_value = (loading_figure, 'My Artist',
                      'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
-                     'Genre:')
+                     '')
     if n_clicks == 0:
         return default_value
 
@@ -106,7 +114,7 @@ def query_artist_name(n_clicks, x_dropdown, y_dropdown, artist_name):
         return default_value  # Return an empty graph
     df = results[0]
     name = results[1][0]
-    genre = 'Genre: '+results[1][1]
+    genre = results[1][1]
     image_url = results[1][2]
     spotify_url = results[1][3]
     # fig = px.scatter(df, x p "date", y = "duration", text = "name")
