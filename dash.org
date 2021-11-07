@@ -42,13 +42,3 @@ properly. I followed [[https://devcenter.heroku.com/articles/securekey#:~:text=S
 #+begin_src bash
 heroku addons:create securekey --app hackrpi-spotify-query
 #+end_src
-
-* TODO List
-** TODO Register a Domain Name
-We need to decide on a name first. I am going to use the porque website in the
-mean time.
-
-https://www.tech.study/
-* Interface
-- Textbox for searching the artist
-* Secret Keys
