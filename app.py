@@ -12,8 +12,8 @@ import numpy as np
 import spotipy_test as sp
 
 loading_figure = {"layout": {"xaxis": {"visible": False}, "yaxis": {"visible":
-                                                                    False}, "annotations": [{"text": "No matching data found", "xref": "paper",
-                                                                                             "yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
+False}, "annotations": [{"text": "No matching data found", "xref": "paper",
+"yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
 parameters = ["name", "duration", "date",
               "tempo", "energy", "valence", "album name"]
 
@@ -44,14 +44,32 @@ app.layout = html.Div(children=[
         html.Img(id="artist_img", src='', style={
                  'height': '15%', 'width': '15%', 'border-radius': '50%'}),
         html.P(id="artist-genre", children=''),
-        dcc.Dropdown(id='demo-dropdown',
-                     options=[
-                         {'label': 'New York City', 'value': 'NYC'},
-                         {'label': 'Montreal', 'value': 'MTL'},
-                         {'label': 'San Francisco', 'value': 'SF'}
-                     ],
-                     value='NYC'
-                     ),
+        dcc.Dropdown(id='x_dropdown',
+                     options = [
+                        {'label' : "Name", 'value': "Name"},
+                         {'label' : "Duration",'value' : "Duration"},
+                         {'label' : 'Date' ,'value' : "Date"},
+                         {'label' : 'Tempo', 'value' : "Tempo"},
+                         {'label': 'Energy', 'value' : "Energy"},
+                         {'label':'Valence','value' : "Valence"},
+                         {'label' :"Album Name", 'value' : "Album Name"}
+                    ],
+                    value='Name',
+                    # style = {'width': '50%'}
+                    style={'display': "inline-block", "float" : "right", 'width': '33%' }),
+        dcc.Dropdown(id = 'y_dropdown',
+                    options = [
+                        {'label' : "Name", 'value': "Name"},
+                        {'label' : "Duration",'value' : "Duration"},
+                        {'label' : 'Date' ,'value' : "Date"},
+                        {'label' : 'Tempo', 'value' : "Tempo"},
+                        {'label': 'Energy', 'value' : "Energy"},
+                        {'label':'Valence','value' : "Valence"},
+                        {'label' :"Album Name", 'value' : "Album Name"}
+                    ],
+                    value = 'Name',
+                    style={'display': "inline-block", "float" : "right", 'width': '33%'}
+        ),
     ]),
 
     html.Br(),  # break (space between input and graph)
