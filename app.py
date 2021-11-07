@@ -20,39 +20,29 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
-
-app.layout = html.Div(children = [
-     # html.Div(children='''Enter an Artist Name:'''),
-    html.H1(children='Spotify Data Parser'),
+app.layout = html.Div(children=[
+    html.H1(children='Spotify Data'),
+    # html.Div(children='''Enter an Artist Name:'''),
     html.Div([
         dcc.Input(
-            id = "artist-name-input",
-            placeholder = "Artist...",
-            type = "text",
+            id="artist-name-input",
+            placeholder="Artist...",
+            type="text",
             # min = 2000, max= 2020, step = 1,
-            minLength = 0, maxLength = 100, #num of characters inside input box
-            autoComplete = 'on',  
-            required = False,  # requires user to put something into input box  SET TRUE LATER
-            autoFocus = True,  # highlight the box on reload
-            size = "20"
-        ),
-        html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
-    ]),
+            minLength=0, maxLength=100,  # num of characters inside input box
+            autoComplete='on',
+            required=False,  # requires user to put something into input box  SET TRUE LATER
+            autoFocus=True,  # highlight the box on reload
+            size="20"
+        )]),
+    html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
 
-    # html.Div(id='button-check-output',
-    #          children='Enter a value and press submit'),
-    # html.Br(), #break (space between input and graph)
-    dcc.Graph(id = "graph", figure = loading_figure, style={'width': '100%', 'height': '80vh'}),
+    html.Div(id='button-check-output',
+             children='Enter your favorite artist'),
+    html.Br(),  # break (space between input and graph)
+    dcc.Graph(id="graph", figure={}),
+
 ])
-
-# @app.callback(
-#     Output('button-check-output', 'children'),
-#     Input('artist-name-submit-button', 'n_clicks'),
-#     State('artist-name-input', 'value')
-# )
-# def change_state(n_clicks, artist_name):
-#     n_clicks += 1
-#     return "This buttons has been clicked {} times".format(n_clicks)
 
 @app.callback(
     Output('graph', 'figure'),
@@ -88,6 +78,7 @@ def query_artist_name(n_clicks, artist_name):
     )
     return fig
     # return {data: [{'x': np.random.randint(0, 100, 1000), 'type': ''}]}
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
