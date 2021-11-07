@@ -1,23 +1,19 @@
 #+TITLE: HACK RPI
 
-* Table of Contents :toc:
-- [[#spotify][Spotify]]
-  - [[#project-breakdown][Project Breakdown]]
-  - [[#tasks][Tasks]]
-  - [[#resources][Resources]]
-  - [[#notes][Notes]]
-  - [[#a][a]]
-- [[#website][Website]]
-  - [[#plan][Plan]]
-  - [[#resources-1][Resources]]
-- [[#project-ideas][Project Ideas]]
-  - [[#big-data][Big Data]]
-  - [[#education][Education]]
-- [[#por-qué][¿Por qué?]]
-  - [[#running-a-local-html-server-via-python][Running a Local HTML Server via Python]]
-  - [[#pushing-changes-to-the-website][Pushing Changes to the Website]]
+* Plans for the Future
+We spent a good chunk of time trying to get the styling of the page to behave
+nicely. In the future, a good rework of the visual elements are definitely in
+place.
 
-* Spotify
+Some of the parameters available to the user aren't commonly known. Having a
+document with extra information on these parameters would create a more cohesive
+product.
+
+In terms of function, adding an option to compare parameters of two different
+artists would be interesting. It would also be interesting to compare different
+genres.
+
+* Spotify Search Query
 - Create a website that acts an interface to grab data from spotify
 - Ask a user for an *artist* and then output data like:
   - How has the artists average song length changed over time
@@ -39,20 +35,6 @@
 ** Notes
 - Watch out for rate limit when using spotify api
 ** a
-* Website
-** Plan
-We want to make something that looks something like the following. A dashboard
-where the user enters some information, we fetech the data, and then return some
-graphs and results. Something like the following:
-
-[[./.org_imgs/readme.org_20211106_115639_fXiemE.png]]
-
-We are going to be using Python Dash in order to do this.
-** Resources
-- https://dash.plotly.com/
-- https://appsilon.com/dash-vs-shiny/
-- https://dash.plotly.com/installation
-
 
 * Project Ideas
 ** Big Data
@@ -63,30 +45,3 @@ We are going to be using Python Dash in order to do this.
 - Check out [[https://data.gov]]
 ** Education
 - Create some kind of tool to help students
-* ¿Por qué?
-
-** Running a Local HTML Server via Python
-
-#+begin_src bash
-python -m http.server
-#+end_src
-
-In your web browser navigate to:
-
-[[http://localhost:8000/]]
-
-Find the proper directory.
-
-For more information see: https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server
-
-** Pushing Changes to the Website
-1. Push the changes up into the gitub repo first.
-2. Log into CPANEL: https://a2plcpnl0069.prod.iad2.secureserver.net:2083/logout/?locale=en
-3. Navigate to:
-
-   [[./imgs/git_version_control_logo.png]]
-4. Click "Manage" for "porque.life"
-5. Navigate to "Pull or Deploy"
-6. Click "Update from Remote"
-7. Once the HEAD commit message changes to the most recent commit, click "Deploy
-   HEAD Commint"

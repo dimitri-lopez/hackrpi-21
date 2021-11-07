@@ -29,6 +29,7 @@ pip install plotly
 pip install gunicorn
 pip install pandas
 pip install python-dotenv
+pip install spotipy
 pip freeze > requirements.txt
 #+end_src
 

@@ -38,42 +38,39 @@ app.layout = html.Div(children=[
              ),
 
         html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
-        html.Div(id='button-check-output',
-                    children='Enter your favorite artist'),
+        dcc.Dropdown(id = 'y-dropdown',
+                    options = [
+                        {'label': "Duration", 'value': "duration"},
+                        {'label': 'Date', 'value': "date"},
+                        {'label': 'Tempo', 'value': "tempo"},
+                        {'label': 'Energy', 'value': "energy"},
+                        {'label': 'Valence','value': "valence"},
+                        {'label': "Album Name", 'value': "album name"}
+                    ],
+                    value = 'tempo',
+                    style={'display': "inline-block", "float" : "right", 'width': '33%'}
+        ),
+        dcc.Dropdown(id='x-dropdown',
+                     options = [
+                         {'label': "Duration", 'value': "duration"},
+                         {'label': 'Date', 'value': "date"},
+                         {'label': 'Tempo', 'value': "tempo"},
+                         {'label': 'Energy', 'value': "energy"},
+                         {'label':'Valence', 'value': "valence"},
+                         {'label':"Album Name", 'value': "album name"}
+                    ],
+                    value='duration',
+                    # style = {'width': '50%'}
+                    style={'display': "inline-block", "float" : "right", 'width': '33%' }),
         html.H2(id="artist-name", children=''),
         html.Img(id="artist_img", src='', style={
                  'height': '15%', 'width': '15%', 'border-radius': '50%'}),
         html.P(id="artist-genre", children=''),
-        dcc.Dropdown(id='x_dropdown',
-                     options = [
-                        {'label' : "Name", 'value': "Name"},
-                         {'label' : "Duration",'value' : "Duration"},
-                         {'label' : 'Date' ,'value' : "Date"},
-                         {'label' : 'Tempo', 'value' : "Tempo"},
-                         {'label': 'Energy', 'value' : "Energy"},
-                         {'label':'Valence','value' : "Valence"},
-                         {'label' :"Album Name", 'value' : "Album Name"}
-                    ],
-                    value='Name',
-                    # style = {'width': '50%'}
-                    style={'display': "inline-block", "float" : "right", 'width': '33%' }),
-        dcc.Dropdown(id = 'y_dropdown',
-                    options = [
-                        {'label' : "Name", 'value': "Name"},
-                        {'label' : "Duration",'value' : "Duration"},
-                        {'label' : 'Date' ,'value' : "Date"},
-                        {'label' : 'Tempo', 'value' : "Tempo"},
-                        {'label': 'Energy', 'value' : "Energy"},
-                        {'label':'Valence','value' : "Valence"},
-                        {'label' :"Album Name", 'value' : "Album Name"}
-                    ],
-                    value = 'Name',
-                    style={'display': "inline-block", "float" : "right", 'width': '33%'}
-        ),
     ]),
 
     html.Br(),  # break (space between input and graph)
-    dcc.Graph(id="graph", figure={}),
+    html.Br(),  # break (space between input and graph)
+    dcc.Graph(id = "graph", figure = {}, style={'width': '100%', 'height': '90vh'}),
 
 ])
 
@@ -85,10 +82,14 @@ app.layout = html.Div(children=[
         Output('artist_img', 'src'),
         Output('artist-genre', 'children'),
     ],
-    Input('artist-name-submit-button', 'n_clicks'),
-    State('artist-name-input', 'value')
+    [
+        Input('artist-name-submit-button', 'n_clicks'),
+        Input('x-dropdown', 'value'),
+        Input('y-dropdown', 'value')
+    ],
+    State('artist-name-input', 'value'),
 )
-def query_artist_name(n_clicks, artist_name):
+def query_artist_name(n_clicks, x_dropdown, y_dropdown, artist_name):
     default_value = (loading_figure, 'My Artist',
                      'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg',
                      'Genre:')
@@ -107,11 +108,19 @@ def query_artist_name(n_clicks, artist_name):
     # fig = px.scatter(df, x p "date", y = "duration", text = "name")
     print(df)
     # fig = px.scatter(df, x = "duration", y = "valence", text = "name", color = "album name")
-    fig = px.scatter(df, x="duration", y="valence", color="album name")
+    print("x_dropdown: {}".format(x_dropdown))
+    print("y_dropdown: {}".format(y_dropdown))
+    print("artist_name: {}".format(artist_name))
+
+    fig = px.scatter(df, x=x_dropdown, y=y_dropdown, color="album name",
+                     hover_name="name", hover_data=["album name", "date",
+                                                    "duration", "tempo",
+                                                    "energy", "valence"])
+
     fig.update_layout(
         title=name,
-        xaxis_title="X Axis Title".upper(),
-        yaxis_title="Y Axis Title".upper(),
+        xaxis_title=x_dropdown.title(),
+        yaxis_title=y_dropdown.title(),
         legend_title="Album Name".upper(),
         font=dict(
             family="Courier New, monospace",
@@ -119,7 +128,7 @@ def query_artist_name(n_clicks, artist_name):
             color="RebeccaPurple"
         )
     )
-    return fig, name, image_url, genre
+    return fig, name, image_url, genre.title()
     # return {data: [{'x': np.random.randint(0, 100, 1000), 'type': ''}]}
 
 
