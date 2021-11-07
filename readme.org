@@ -1,6 +1,12 @@
-#+TITLE: HACK RPI
+#+TITLE: Spotify Query
 
-https://spotifyquery.co
+* Table of Contents :toc:
+- [[#project-details][Project Details]]
+- [[#what-we-learned][What We Learned]]
+- [[#challenges-we-ran-into][Challenges We Ran Into]]
+- [[#accomplishments][Accomplishments]]
+- [[#built-with][Built With]]
+- [[#plans-for-the-future][Plans for the Future]]
 
 * Project Details
 We created a user interface to generate visualizations describing the music of

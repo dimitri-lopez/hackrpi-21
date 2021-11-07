@@ -1,22 +1,13 @@
 #+TITLE: Dash
 
-https://porque.life
+* Dash Deployment / Installation
+Use the following to install dash locally:
 
-http://127.0.0.1:8050/
+https://dash.plotly.com/installation
 
-https://hackrpi-spotify-query.herokuapp.com/
-
-http://0.0.0.0:8000/
-
-We are going to have a central website that we can point people towards. Within
-the html for the website, there is an iframe link that calls to where the Dash
-code is being run.
-
-* Installation
-Following: https://dash.plotly.com/installation
-* Dash Deployment
-- Following: https://dash.plotly.com/deployment
-- Heroku Deployment: https://devcenter.heroku.com/articles/procfile
+Deploying the dash application takes a bit more work. Use the links below:
+- https://dash.plotly.com/deployment
+- https://devcenter.heroku.com/articles/procfile
 
 
 Setting up the virtual environment. Adds a list of dependencies and appends them
@@ -46,7 +37,7 @@ git push heroku main # push repo to heroku
 #+end_src
 
 We also need to add the right keys and tokens so that the Spotify API works
-proprely. I followed [[https://devcenter.heroku.com/articles/securekey#:~:text=Secure%20Key%20can%20be%20attached,%2Dclear%2D6489...&text=This%20can%20be%20confirmed%20using%20the%20heroku%20config%20command][this]] tutorial.
+properly. I followed [[https://devcenter.heroku.com/articles/securekey#:~:text=Secure%20Key%20can%20be%20attached,%2Dclear%2D6489...&text=This%20can%20be%20confirmed%20using%20the%20heroku%20config%20command][this]] tutorial.
 
 #+begin_src bash
 heroku addons:create securekey --app hackrpi-spotify-query
