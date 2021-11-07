@@ -12,8 +12,8 @@ import numpy as np
 import spotipy_test as sp
 
 loading_figure = {"layout": {"xaxis": {"visible": False}, "yaxis": {"visible":
-False}, "annotations": [{"text": "No matching data found", "xref": "paper",
-"yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
+                                                                    False}, "annotations": [{"text": "No matching data found", "xref": "paper",
+                                                                                             "yref": "paper", "showarrow": False, "font": {"size": 28}}]}}
 parameters = ["name", "duration", "date",
               "tempo", "energy", "valence", "album name"]
 
@@ -22,7 +22,8 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 app.layout = html.Div(children=[
-    html.H1(children='Spotify Data'),
+    html.H1(children='Spotify Data', style={
+            'margin-top': '15px', 'margin-top': '10px'}),
     # html.Div(children='''Enter an Artist Name:'''),
     html.Div([
         dcc.Input(
@@ -34,43 +35,46 @@ app.layout = html.Div(children=[
              autoComplete='on',
              required=False,  # requires user to put something into input box  SET TRUE LATER
              autoFocus=True,  # highlight the box on reload
-             size="20"
+             size="20",
+             style={'margin-left': '50px'}
              ),
 
         html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
-        dcc.Dropdown(id = 'y-dropdown',
-                    options = [
-                        {'label': "Duration", 'value': "duration"},
+        dcc.Dropdown(id='y-dropdown',
+                     options=[
+                         {'label': "Duration", 'value': "duration"},
                         {'label': 'Date', 'value': "date"},
                         {'label': 'Tempo', 'value': "tempo"},
                         {'label': 'Energy', 'value': "energy"},
-                        {'label': 'Valence','value': "valence"},
+                        {'label': 'Valence', 'value': "valence"},
                         {'label': "Album Name", 'value': "album name"}
-                    ],
-                    value = 'tempo',
-                    style={'display': "inline-block", "float" : "right", 'width': '33%'}
-        ),
+                     ],
+                     value='tempo',
+                     style={'display': "inline-block",
+                            "float": "right", 'width': '33%'}
+                     ),
         dcc.Dropdown(id='x-dropdown',
-                     options = [
+                     options=[
                          {'label': "Duration", 'value': "duration"},
                          {'label': 'Date', 'value': "date"},
                          {'label': 'Tempo', 'value': "tempo"},
                          {'label': 'Energy', 'value': "energy"},
-                         {'label':'Valence', 'value': "valence"},
-                         {'label':"Album Name", 'value': "album name"}
-                    ],
-                    value='duration',
-                    # style = {'width': '50%'}
-                    style={'display': "inline-block", "float" : "right", 'width': '33%' }),
-        html.H2(id="artist-name", children=''),
+                         {'label': 'Valence', 'value': "valence"},
+                         {'label': "Album Name", 'value': "album name"}
+                     ],
+                     value='duration',
+                     # style = {'width': '50%'}
+                     style={'display': "inline-block", "float": "right", 'width': '33%'}),
+        html.H2(id="artist-name", children='', style={'margin-left': '50px'}),
         html.Img(id="artist_img", src='', style={
-                 'height': '15%', 'width': '15%', 'border-radius': '50%'}),
-        html.P(id="artist-genre", children=''),
+                 'height': '15%', 'width': '15%', 'border-radius': '50%', 'margin-left': '50px'}),
+        html.P(id="artist-genre", children='', style={'margin-left': '50px'}),
     ]),
 
     html.Br(),  # break (space between input and graph)
     html.Br(),  # break (space between input and graph)
-    dcc.Graph(id = "graph", figure = {}, style={'width': '100%', 'height': '90vh'}),
+    dcc.Graph(id="graph", figure={}, style={
+              'width': '100%', 'height': '90vh'}),
 
 ])
 
