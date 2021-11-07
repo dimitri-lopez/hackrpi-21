@@ -26,16 +26,16 @@ app.layout = html.Div(children=[
     # html.Div(children='''Enter an Artist Name:'''),
     html.Div([
         dcc.Input(
-            id="artist-name-input",
-            placeholder="Artist...",
-            type="text",
-            # min = 2000, max= 2020, step = 1,
-            minLength=0, maxLength=100,  # num of characters inside input box
-            autoComplete='on',
-            required=False,  # requires user to put something into input box  SET TRUE LATER
-            autoFocus=True,  # highlight the box on reload
-            size="20"
-        ),
+             id="artist-name-input",
+             placeholder="Artist...",
+             type="text",
+             # min = 2000, max= 2020, step = 1,
+             minLength=0, maxLength=100,  # num of characters inside input box
+             autoComplete='on',
+             required=False,  # requires user to put something into input box  SET TRUE LATER
+             autoFocus=True,  # highlight the box on reload
+             size="20"
+             ),
 
         html.Button('Submit', id='artist-name-submit-button', n_clicks=0),
         html.Div(id='button-check-output',
